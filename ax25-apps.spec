@@ -5,7 +5,8 @@ Version:	0.0.6
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://prdownloads.sourceforge.net/ax25/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/ax25/%{name}-%{version}.tar.gz
+URL:		http://ax25.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libax25-devel
