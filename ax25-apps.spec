@@ -6,10 +6,6 @@ License: LGPL
 Group: Applications/Communications
 Group(pl): Aplikacje/Komunikacja
 Source0: http://prdownloads.sourceforge.net/ax25/ax25-apps-%{version}.tar.gz
-Patch0: http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-call.patch
-Patch1: http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-menu.patch
-Patch2: http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-listen.patch
-Patch3: http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-utils.patch
 BuildRoot: /tmp/%{name}-%{version}-root
 ExclusiveArch: %{ix86}
 Requires: glibc >= 2.2
@@ -33,15 +29,9 @@ Aplikacje testuj±ce sprawno¶æ po³±czeñ protoko³u AX25.
 %prep
 %setup -q
 
-cd call
-%patch0 -p0
-%patch1 -p0
-cd ../listen
-%patch2 -p0
-%patch3 -p0
-
 %build
 
+CPPFLAGS="-I/usr/include/ncurses"; export CPPFLAGS
 %configure2_13
 make
 
@@ -58,8 +48,8 @@ gzip -9nf ${RPM_BUILD_ROOT}/usr/share/man/man8/*
 
 %postun -p /sbin/ldconfig
 
-#%clean                                                                          
-#rm -rf $RPM_BUILD_ROOT
+%clean                                                                          
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
