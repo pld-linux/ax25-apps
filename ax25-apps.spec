@@ -42,7 +42,7 @@ rm -rf $RPM_BUILD_ROOT
 gzip -9nf AUTHORS ChangeLog NEWS README \
 	*/{COPYING,HISTORY,README}*
 
-%clean                                                                          
+%clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
