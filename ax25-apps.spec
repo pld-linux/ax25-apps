@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://dl.sourceforge.net/ax25/%{name}-%{version}.tar.gz
+# Source0-md5:	47d9a775890f3694cf47659423a69ae5
 URL:		http://ax25.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
