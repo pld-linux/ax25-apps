@@ -49,7 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README */{HISTORY,README}*
+# note: ax25ipd/COPYING.ax25ipd contains notes other than GPL
+%doc AUTHORS ChangeLog NEWS README ax25*/{COPYING,HISTORY,README}.ax25*
 %{_sysconfdir}/ax25/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
