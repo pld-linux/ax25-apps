@@ -28,7 +28,7 @@ rm -f missing
 libtoolize --copy --force
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 AM_CFLAGS="-I%{_includedir}/ncurses"; export AM_CFLAGS
 %configure
 %{__make}
