@@ -14,8 +14,8 @@ BuildRequires:	libax25-devel
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
-Requires:	libax25 >= 0.0.9
 Requires:	ax25-tools >= 0.0.8
+Requires:	libax25 >= 0.0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	kernel <= 2.2.0
 
@@ -50,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 # note: ax25ipd/COPYING.ax25ipd contains notes other than GPL
-%doc AUTHORS ChangeLog NEWS README ax25*/{COPYING,HISTORY,README}.ax25*
+%doc AUTHORS ChangeLog NEWS README ax25*/{HISTORY,README}.ax25*
 %{_sysconfdir}/ax25/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
