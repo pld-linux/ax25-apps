@@ -1,0 +1,19 @@
+*** utils.c	Tue Apr 10 03:58:56 2001
+--- utils.c.new	Tue Oct 23 16:07:33 2001
+***************
+*** 7,13 ****
+  
+  #include <stdio.h>
+  #include <stdarg.h>
+! #include <curses.h>
+  #include <netdb.h>
+  #include <netinet/in.h>
+  #include <string.h>
+--- 7,13 ----
+  
+  #include <stdio.h>
+  #include <stdarg.h>
+! #include <ncurses/curses.h>
+  #include <netdb.h>
+  #include <netinet/in.h>
+  #include <string.h>
