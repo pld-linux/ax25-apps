@@ -25,7 +25,7 @@ Aplikacje testuj±ce sprawno¶æ po³±czeñ protoko³u AX25.
 
 %build
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 aclocal
 %{__autoconf}
 %{__automake}
