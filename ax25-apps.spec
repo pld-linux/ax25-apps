@@ -13,8 +13,6 @@ Requires:	libax25 >= 0.0.9
 Requires:	ax25-tools >= 0.0.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	kernel <= 2.2.0
-ExclusiveArch:  %{ix86}
-
 
 %description
 Applications to test our AX25 connects.
