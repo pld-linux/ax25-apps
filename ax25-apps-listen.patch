@@ -1,0 +1,19 @@
+*** listen.c	Tue Apr 10 03:58:54 2001
+--- listen.c.new	Tue Oct 23 16:07:06 2001
+***************
+*** 8,14 ****
+  #include <stdlib.h>
+  #include <string.h>
+  #include <time.h>
+! #include <curses.h>
+  
+  #include <sys/socket.h>
+  #include <net/if.h>
+--- 8,14 ----
+  #include <stdlib.h>
+  #include <string.h>
+  #include <time.h>
+! #include <ncurses/curses.h>
+  
+  #include <sys/socket.h>
+  #include <net/if.h>
