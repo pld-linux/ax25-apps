@@ -5,8 +5,6 @@ Version:	0.0.5
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Group(de):	Applikationen/Kommunikation
-Group(pl):	Aplikacje/Komunikacja
 Source0:	http://prdownloads.sourceforge.net/ax25/%{name}-%{version}.tar.gz
 BuildRequires:	libax25-devel
 BuildRequires:	ncurses-devel
