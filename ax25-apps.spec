@@ -6,7 +6,10 @@ Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://prdownloads.sourceforge.net/ax25/%{name}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libax25-devel
+BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	zlib-devel
 Requires:	libax25 >= 0.0.9
@@ -26,7 +29,7 @@ Aplikacje testuj±ce sprawno¶æ po³±czeñ protoko³u AX25.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 AM_CFLAGS="-I%{_includedir}/ncurses"; export AM_CFLAGS
@@ -39,15 +42,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install installconf \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS ChangeLog NEWS README \
-	*/{COPYING,HISTORY,README}*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz */*.gz
+%doc AUTHORS ChangeLog NEWS README */{COPYING,HISTORY,README}*
 %{_sysconfdir}/ax25/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
