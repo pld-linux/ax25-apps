@@ -27,8 +27,8 @@ Aplikacje testuj±ce sprawno¶æ po³±czeñ protoko³u AX25.
 rm -f missing
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 AM_CFLAGS="-I%{_includedir}/ncurses"; export AM_CFLAGS
 %configure
 %{__make}
