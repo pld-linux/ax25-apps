@@ -34,7 +34,7 @@ rm -f missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-AM_CFLAGS="-I%{_includedir}/ncurses"; export AM_CFLAGS
+AM_CFLAGS="-I/usr/include/ncurses"; export AM_CFLAGS
 %configure
 %{__make}
 
