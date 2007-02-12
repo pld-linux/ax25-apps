@@ -1,5 +1,5 @@
 Summary:	ax25 tools for hamradio
-Summary(pl):	Narzêdzia ax25 dla hamradio
+Summary(pl.UTF-8):   NarzÄ™dzia ax25 dla hamradio
 Name:		ax25-apps
 Version:	0.0.6
 Release:	2
@@ -22,8 +22,8 @@ Conflicts:	kernel <= 2.2.0
 %description
 Applications to test our AX25 connects.
 
-%description -l pl
-Aplikacje testuj±ce sprawno¶æ po³±czeñ protoko³u AX25.
+%description -l pl.UTF-8
+Aplikacje testujÄ…ce sprawnoÅ›Ä‡ poÅ‚Ä…czeÅ„ protokoÅ‚u AX25.
 
 %prep
 %setup -q
