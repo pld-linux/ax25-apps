@@ -2,7 +2,7 @@ Summary:	ax25 tools for hamradio
 Summary(pl.UTF-8):	Narzędzia ax25 dla hamradio
 Name:		ax25-apps
 Version:	0.0.6
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://dl.sourceforge.net/ax25/%{name}-%{version}.tar.gz
