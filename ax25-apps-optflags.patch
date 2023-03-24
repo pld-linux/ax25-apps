@@ -1,0 +1,11 @@
+--- ax25-apps-0.0.6/ax25ipd/Makefile.am.orig	2001-10-09 03:03:05.000000000 +0200
++++ ax25-apps-0.0.6/ax25ipd/Makefile.am	2023-03-24 21:30:04.906258789 +0100
+@@ -8,7 +8,7 @@ EXTRA_DIST = $(man_MANS) $(etcfiles) $(d
+ docdir = ${datadir}/doc/ax25-apps
+ doc_DATA = README.ax25ipd HISTORY.ax25ipd COPYING.ax25ipd
+ 
+-CFLAGS = -DUSE_TERMIO
++AM_CFLAGS = -DUSE_TERMIO
+ ax25ipd_LDADD = $(AX25_LIB)
+ 
+ ax25ipd_SOURCES =	\
