@@ -1,0 +1,89 @@
+Fix linker errors from -fno-common (GCC 10+ default).
+
+ax25ipd.h declared all global variables as tentative definitions
+(no `extern`).  Every TU including the header got its own copy,
+which the linker rejects under -fno-common.  Mark them `extern`
+in the header and define them once in ax25ipd.c.  Also give the
+previously-anonymous `stats` struct a tag (`struct ax25ipd_stats`)
+so it can be referred to from another TU.
+
+--- ax25-apps-0.0.6.orig/ax25ipd/ax25ipd.h	2026-05-17 01:49:20.517171140 +0200
++++ ax25-apps-0.0.6/ax25ipd/ax25ipd.h	2026-05-17 01:49:25.844720683 +0200
+@@ -70,24 +70,24 @@
+ #include	<sys/types.h>
+ #include	<netax25/daemon.h>
+ 
+-int udp_mode;                   /* true if we need a UDP socket */
+-int ip_mode;                    /* true if we need the raw IP socket */
+-unsigned short my_udp;          /* the UDP port to use (network byte order) */
+-char ttydevice[128];            /* the tty device for serial comms */
+-int ttyspeed;                   /* The baud rate on the tty device */
+-unsigned char mycallsign[7];    /* My callsign, shifted ASCII with SSID */
+-unsigned char mycallsign2[7];   /* My seconds port callsign, shifted ASCII with SSID */
+-unsigned char myalias[7];       /* An alias to use */
+-unsigned char myalias2[7];      /* An alias for second port */
+-char bc_text[128];              /* The text for beacon messages */
+-int bc_interval;                /* The interval, in seconds, between beacons */
+-int bc_every;                   /* true=every, false=after */
+-int digi;                       /* True if we are connected to a TNC */
+-int loglevel;                   /* Verbosity level */
++extern int udp_mode;                   /* true if we need a UDP socket */
++extern int ip_mode;                    /* true if we need the raw IP socket */
++extern unsigned short my_udp;          /* the UDP port to use (network byte order) */
++extern char ttydevice[128];            /* the tty device for serial comms */
++extern int ttyspeed;                   /* The baud rate on the tty device */
++extern unsigned char mycallsign[7];    /* My callsign, shifted ASCII with SSID */
++extern unsigned char mycallsign2[7];   /* My seconds port callsign, shifted ASCII with SSID */
++extern unsigned char myalias[7];       /* An alias to use */
++extern unsigned char myalias2[7];      /* An alias for second port */
++extern char bc_text[128];              /* The text for beacon messages */
++extern int bc_interval;                /* The interval, in seconds, between beacons */
++extern int bc_every;                   /* true=every, false=after */
++extern int digi;                       /* True if we are connected to a TNC */
++extern int loglevel;                   /* Verbosity level */
+ /* addition for dual port flag */
+-int dual_port;
++extern int dual_port;
+ 
+-struct {
++struct ax25ipd_stats {
+ 	int kiss_in;            /* # packets received */
+ 	int kiss_toobig;        /* packet too large */
+ 	int kiss_badtype;       /* control byte non-zero */
+@@ -105,7 +105,8 @@
+ 	int ip_tooshort;        /* packet too short to be a valid frame */
+ 	int ip_not_for_me;      /* packet not for me (in digi mode) */
+ 	int ip_i_am_dest;       /* I am destination (in digi mode) */
+-} stats;
++};
++extern struct ax25ipd_stats stats;
+ 
+ #define MAX_FRAME 2048
+ 
+--- ax25-apps-0.0.6.orig/ax25ipd/ax25ipd.c	2026-05-17 01:49:20.517142085 +0200
++++ ax25-apps-0.0.6/ax25ipd/ax25ipd.c	2026-05-17 01:49:32.606642426 +0200
+@@ -23,6 +23,24 @@
+ #include "../pathnames.h"
+ #include "ax25ipd.h"
+ 
++/* Global definitions for variables declared extern in ax25ipd.h. */
++int udp_mode;
++int ip_mode;
++unsigned short my_udp;
++char ttydevice[128];
++int ttyspeed;
++unsigned char mycallsign[7];
++unsigned char mycallsign2[7];
++unsigned char myalias[7];
++unsigned char myalias2[7];
++char bc_text[128];
++int bc_interval;
++int bc_every;
++int digi;
++int loglevel;
++int dual_port;
++struct ax25ipd_stats stats;
++
+ jmp_buf restart_env;
+ 
+ /* Prototypes */

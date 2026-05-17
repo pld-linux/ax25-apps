@@ -1,0 +1,31 @@
+--- ax25-apps-0.0.6/ax25ipd/Makefile.am.orig	2001-10-09 03:03:05.000000000 +0200
++++ ax25-apps-0.0.6/ax25ipd/Makefile.am	2026-05-13 23:51:36.453020717 +0200
+@@ -8,7 +8,7 @@
+ docdir = ${datadir}/doc/ax25-apps
+ doc_DATA = README.ax25ipd HISTORY.ax25ipd COPYING.ax25ipd
+
+-AM_CFLAGS = -DUSE_TERMIO
++AM_CFLAGS = -DUSE_TERMIOS
+ ax25ipd_LDADD = $(AX25_LIB)
+
+ ax25ipd_SOURCES =	\
+--- ax25-apps-0.0.6/ax25ipd/ax25ipd.h.orig	2001-10-09 03:03:12.000000000 +0200
++++ ax25-apps-0.0.6/ax25ipd/ax25ipd.h	2026-05-13 23:51:36.455063206 +0200
+@@ -64,7 +64,6 @@
+ #include	<netinet/ip_icmp.h>
+ #include	<sys/ioctl.h>
+ #include	<sys/socket.h>
+-#include	<termio.h>
+ #include	<sys/termios.h>
+ #include	<sys/time.h>
+ #include	<sys/types.h>
+--- ax25-apps-0.0.6/ax25ipd/io.c.orig	2001-10-09 03:03:11.000000000 +0200
++++ ax25-apps-0.0.6/ax25ipd/io.c	2026-05-13 23:52:27.029897922 +0200
+@@ -29,6 +29,7 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <syslog.h>
++#include <time.h>
+
+ #ifdef __bsdi__
+ #define USE_TERMIOS

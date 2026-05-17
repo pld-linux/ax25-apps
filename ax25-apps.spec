@@ -2,12 +2,14 @@ Summary:	ax25 tools for hamradio
 Summary(pl.UTF-8):	Narzędzia ax25 dla hamradio
 Name:		ax25-apps
 Version:	0.0.6
-Release:	7
+Release:	8
 License:	GPL v2+
 Group:		Applications/Communications
 Source0:	https://downloads.sourceforge.net/ax25/%{name}-%{version}.tar.gz
 # Source0-md5:	47d9a775890f3694cf47659423a69ae5
 Patch0:		%{name}-optflags.patch
+Patch1:		%{name}-termios.patch
+Patch2:		%{name}-fno-common.patch
 URL:		https://ax25.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,13 +31,15 @@ Aplikacje testujące sprawność połączeń protokołu AX25.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-CPPFLAGS="%{rpmcppflags} -I/usr/include/ncurses"
+CPPFLAGS="%{rpmcppflags} -I/usr/include/ncurses" \
 %configure
 %{__make}
 
